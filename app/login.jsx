@@ -15,13 +15,21 @@ export default function Login(){
     };
 
     return (
-        <View style = {styles.container}>
-            <Text style={styles.title}>Iniciar Sesión</Text>
-            <TextInput placeholder='Usuario' value = {usuario} onChangeText={setUsuario} style={styles.input} />
-            <TextInput placeholder='Contraseña' value={clave} onChangeText={setClave} secureTextEntry style={styles.input}/>
-            <Button title="Ingresar" onPress={ingresar} />
-        </View>
-    );
+    <View style={styles.container}>
+      <Text style={styles.title}>Iniciar Sesión</Text>
+      <TextInput placeholder="Usuario" value={usuario} onChangeText={setUsuario} style={styles.input} />
+      <TextInput placeholder="Contraseña" value={clave} onChangeText={setClave} secureTextEntry style={styles.input} />
+      <Button title="Ingresar" onPress={ingresar} />
+
+      {/* NUEVO: acceso con rostro */}
+      <View style={{ height: 12 }} />
+      <Button title="Ingresar con rostro" onPress={() =>
+        router.push({ pathname: '/face/login', params: { usuario: usuario || 'Invitado' } })
+      } />
+      <View style={{ height: 8 }} />
+      <Button title="Registrar rostro" onPress={() => router.push('/face/enroll')} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
